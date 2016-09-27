@@ -1,0 +1,10 @@
+computeSourcePath=true
+configMode=serverFile
+contextsDir=/usr/local/apache-tomcat-9.0.0.M10/conf/Catalina/localhost
+eclipse.preferences.version=1
+managerUrl=http\://localhost\:8080/manager
+projectsInSourcePath=proyecto-base-spring;
+tomcatConfigFile=/usr/local/apache-tomcat-9.0.0.M10/conf/server.xml
+tomcatDir=/usr/local/apache-tomcat-9.0.0.M10
+tomcatJRE=com.oracle.java.8u101.jdk
+tomcatVersion=tomcatV9
