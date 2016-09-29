@@ -46,63 +46,68 @@
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>Listado de Turnos</h1>
-        <p>Haga click sobre el turno elegido para continuar con la solicitud</p>
+        <h1>Solicitar turno</h1>
+        <p>	${clave_especialidad}
+			${clave_fecha} 
+        	${clave_horario} 
+        </p>
       </div>
 
       <div class="row">
        
         <div class="col-md-12">
         
-          <table class="table table-striped">
-            <thead>
-               <tr>
-                <th></th>
-                <th>Especialidad</th>
-                <th>Día</th>
-                <th>Horario</th>
-              </tr>
-            </thead>
-            <tbody>
-            
-              <tr>
-                <td><a href="solicita?especialidad=Cardiología&fecha=15-10-2016&horario=14:00hs">Solicitar</a></td>
-                <td>Cardiología</td>
-                <td>15/10/2016</td>
-                <td>14.00 hs</td>
-              </tr>
-              
-              <tr>
-                <td><a href="solicita?especialidad=Cardiología&fecha=15-10-2016&horario=14:30hs">Solicitar</a></td>
-                <td>Cardiología</td>
-                <td>15/10/2016</td>
-                <td>14.30 hs</td>
-                
-              </tr>
-             
-              <tr>
-                <td><a href="solicita?especialidad=Cardiología&fecha=15-10-2016&horario=15:00hs">Solicitar</a></td>
-                <td>Cardiología</td>
-                <td>15/10/2016</td>
-                <td>15.00 hs</td>
-              </tr>
-            
-              <tr>
-                <td><a href="solicita?especialidad=Dermatólogo&fecha=15-10-2016&horario=14:00hs">Solicitar</a></td>
-                <td>Dermatólogo</td>
-                <td>15/10/2016</td>
-                <td>12.00 hs</td>
-              </tr>
-              
-               <tr>
-                <td><a href="solicita?especialidad=Dermatólogo&fecha=15-10-2016&horario=12:30hs">Solicitar</a></td>
-                <td>Dermatólogo</td>
-                <td>15/10/2016</td>
-                <td>12.30 hs</td>
-              </tr>
-              
-            </tbody>
-          </table>
+        	<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+	
+			<form:form action="ej2_recibe" method="POST" modelAttribute="persona">
+				<form:label path="nombre">Nombre</form:label>
+				<form:input path="nombre"/> <br>
+				<form:label path="apellido">Apellido</form:label>
+				<form:input path="apellido"/> <br>
+				<form:label path="telefono">Telefono</form:label>
+				<form:input path="telefono"/> <br>
+				<form:label path="email">Email</form:label>
+				<form:input path="email"/> <br>
+				
+				<input type="submit" value="Enviar">
+			</form:form>
+        
+        <!--  
+          <form class="form-horizontal">
+          
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="nombre">Nombre:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="apellido">Apellido:</label>
+			    <div class="col-sm-10"> 
+			      <input type="text" class="form-control" id="apellido" placeholder="Ingrese su nombre">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="telefono">Teléfono:</label>
+			    <div class="col-sm-10"> 
+			      <input type="text" class="form-control" id="telefono" placeholder="Ingrese su teléfono">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="email">E-mail:</label>
+			    <div class="col-sm-10"> 
+			      <input type="text" class="form-control" id="email" placeholder="Ingrese su e-mail">
+			    </div>
+			  </div>
+			  
+			  <div class="form-group"> 
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <button type="submit" class="btn btn-default">Confirmar turno</button>
+			    </div>
+			  </div>
+			  
+			</form>
+			-->
         </div>
       </div>
 

@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import Modelo.Persona;
-
-
+import ar.edu.grupoesfera.cursospring.modelo.ListaDeTurnos;
+import ar.edu.grupoesfera.cursospring.modelo.Persona;
 
 @Controller
 public class ControladorEjemplosBasicos {
@@ -20,12 +19,12 @@ public class ControladorEjemplosBasicos {
 	public ModelAndView vista(){
 		return new ModelAndView("VistaEjemplo1");//devuelve una vista
 	}
-	
-	@RequestMapping(value="/lista")
-	public ModelAndView listar_turnos(){
-		return new ModelAndView("listado_turnos");
+	/*
+	@RequestMapping(value="/inicio")
+	public ModelAndView inicioConRP(){
+		return new ModelAndView("PaginaRP");
 	}
-
+	*/
 	
 	@RequestMapping(value="/inicio")
 	public ModelAndView inicioConRP(@RequestParam("nombre") String n,
@@ -47,21 +46,41 @@ public class ControladorEjemplosBasicos {
 		return new ModelAndView("PaginaPV",modelo);
 	}
 	
+	/*
+	@RequestMapping(value="/listado") //url
+	public ModelAndView vistaListado(){
+		return new ModelAndView("listado_turnos");//devuelve una vista
+	}*/
 	
-	//Ejemplo 3 Envia parametros por POST
-	@RequestMapping(value="/formulario")
-	public ModelAndView vista3(){
-		return new ModelAndView("VistaEjemplo3","persona",new Persona());
+	
+	@RequestMapping(value="/solicita") //url
+	public ModelAndView vistaSolicita(
+			@RequestParam("especialidad") String especialidad,
+			 @RequestParam("fecha") String fecha,
+			 @RequestParam("horario") String horario
+			){
+		ModelMap modelo = new ModelMap();//contenedor mapa  de clave y valor
+		modelo.put("clave_especialidad", especialidad);
+		modelo.put("clave_fecha", fecha);
+		modelo.put("clave_horario", horario);
+		modelo.put("persona", new Persona());
+		
+		return new ModelAndView("solicitar_turno",modelo);//devuelve una vista
 	}
 	
-	
-	//Ejemplo 3, Recibe y Envia parametros por POST
 	@RequestMapping(value="/ej2_recibe", method = RequestMethod.POST)
 	public ModelAndView crearPersona(@ModelAttribute Persona persona){
 		ModelMap modelo = new ModelMap();
 		modelo.put("clave_nombre", persona.getNombre());
 		modelo.put("clave_apellido", persona.getApellido());
-		return new ModelAndView("ResultadoEjemplo3",modelo);
+		return new ModelAndView("mostrar",modelo);
+	}
+	
+	/*COMENZANDO CON EL PROYECTO*/
+	
+	@RequestMapping(value="/uno")
+	public ModelAndView vista3(){
+		return new ModelAndView("vista_uno","turno",new ListaDeTurnos().getLista().get(0));
 	}
 	
 }
